@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="https://www.nei.org/App_Themes/NEIwebsite/Images/favicon.ico" />
+  <title>核彈研究社</title>
+  <link rel="stylesheet" type="text/css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js charset="UTF-8"></script>
+  <link href="ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" rel="stylesheet">
+  <script src="ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+</head>
+
+<body onload='detect();'>
+  <link href="https://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet">
+  <style>
+    /* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
+
+    body {
+      padding-bottom: 40px;
+      color: #5a5a5a;
+    }
+
+
+
+    /* CUSTOMIZE THE NAVBAR
+    -------------------------------------------------- */
+
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+    .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 20px;
+      margin-bottom: -90px;
+      /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+      -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      padding: 14px 20px 16px;
+      /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+    }
+
+    /* Navbar links: increase padding for taller navbar */
+    .navbar .nav>li>a {
+      padding: 15px 20px;
+    }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+
+
+    /* CUSTOMIZE THE CAROUSEL
+    -------------------------------------------------- */
+
+    /* Carousel base class */
+    .carousel {
+      margin-bottom: 60px;
+    }
+
+    .carousel .container {
+      position: relative;
+      z-index: 9;
+    }
+
+    .carousel-control {
+      height: 80px;
+      margin-top: 0;
+      font-size: 120px;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+      background-color: transparent;
+      border: 0;
+      z-index: 10;
+    }
+
+    .carousel .item {
+      height: 500px;
+    }
+
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: 500px;
+    }
+
+    .carousel-caption {
+      background-color: transparent;
+      position: static;
+      max-width: 550px;
+      padding: 0 20px;
+      margin-top: 200px;
+    }
+
+    .carousel-caption h1,
+    .carousel-caption .lead {
+      margin: 0;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+    }
+
+    .carousel-caption .btn {
+      margin-top: 10px;
+    }
+
+
+
+    /* MARKETING CONTENT
+    -------------------------------------------------- */
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      text-align: center;
+    }
+
+    .marketing h2 {
+      font-weight: normal;
+    }
+
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    /* Featurettes
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 80px 0;
+      /* Space out the Bootstrap <hr> more */
+    }
+
+    .featurette {
+      padding-top: 120px;
+      /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden;
+      /* Vertically center images part 2: clear their floats. */
+    }
+
+    .featurette-image {
+      margin-top: -120px;
+      /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+    }
+
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+      .carousel .item {
+        height: 500px;
+      }
+
+      .carousel img {
+        width: auto;
+        height: 500px;
+      }
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+
+      .carousel .item {
+        height: 300px;
+      }
+
+      .carousel img {
+        height: 300px;
+      }
+
+      .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-top: 100px;
+      }
+
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+
+      .marketing .span4+.span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+    }
+
+    .input-container {
+      display: -ms-flexbox;
+      /* IE10 */
+      display: flex;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .icon {
+      padding: 10px;
+      background: dodgerblue;
+      color: white;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border: 2px solid dodgerblue;
+      height: auto;
+      min-height: 100;
+    }
+
+    /* Set a style for the submit button */
+    .btn {
+      background-color: dodgerblue;
+      color: white;
+      padding: 15px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+    .btn:hover {
+      opacity: 1;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <!-- .navbar-expand-{sm|md|lg|xl}決定在哪個斷點以上就出現漢堡式選單 -->
+  <!-- navbar-dark 文字顏色 .bg-dark 背景顏色 -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top d-md-none">
+
+    <!-- .navbar-brand 左上LOGO位置 -->
+    <a class="navbar-brand">
+      <img src="images/H-logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+      <span class="h3 mx-1 text-white">核彈研究社</span>
+    </a>
+    <!-- .navbar-toggler 漢堡式選單按鈕 -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- .navbar-toggler-icon 漢堡式選單Icon -->
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- .collapse.navbar-collapse 用於外層中斷點群組和隱藏導覽列內容 -->
+    <!-- 選單項目&漢堡式折疊選單 -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" onclick="setTimeout('detect()', 1);">
+      <ul class="navbar-nav mr-auto">
+        <!-- active表示當前頁面 -->
+        <li class="active"><a href="#">首頁</a></li>
+        <li><a href="/message/#new">公告</a></li>
+        <li><a href="/message/#info">內容</a></li>
+        <li><a href="/message/#about">關於</a></li>
+        <li><a href="/message/#member">成員</a></li>
+        <!-- .dropdown Navbar選項使用下拉式選單 -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">網路資源</a>
+          <!-- .dropdown-menu 下拉選單內容 -->
+          <ul class="dropdown-menu">
+            <li class="divider"></li>
+            <li class="nav-header font-weight-bold">C++</li>
+            <li><a href="https://zerojudge.tw/"><small>&nbsp;高中生解題系統</small></a></li>
+            <li><a href="https://en.cppreference.com/w/cpp"><small>&nbsp;C++語法&函式</small></a></li>
+            <li><a href="https://apcs.csie.ntnu.edu.tw/"><small>&nbsp;APCS</small></a></li>
+            <li class="divider"></li>
+            <li class="nav-header font-weight-bold">網頁(HTML/CSS/IJS/PHP)</li>
+            <li><a
+                href="https://www.youtube.com/playlist?list=PL4PF5uRyx54JdUM8J0qeLEu78Ags8mNUQ"><small>&nbsp;js線上教學影片</small></a>
+            </li>
+            <li><a href="https://getbootstrap.com/docs/4.4/getting-started/introduction/"><small>&nbsp;bootstrap 4
+                  入門</small></a></li>
+            <li class="divider"></li>
+            <li class="nav-header font-weight-bold">Python</li>
+            <li><a href="https://www.python.org/"><small>&nbsp;python官網</small></a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PL-g0fdC5RMboYEyt6QS2iLb_1m7QcgfHk"><small>&nbsp;python教學影片</small></a></li>
+            <li class="divider"></li>
+            <li class="nav-header font-weight-bold">其他教學網站</li>
+            <li><a href="https://riyntdypfmgq5f8zfnfxiq-on.drv.tw/info_club/menu.html"><small>js入門網站</small></a></li>
+            <li><a href="https://riyntdypfmgq5f8zfnfxiq-on.drv.tw/unclear_club/lobby.html"><small>核研舊網站</small></a></li>
+            <li><a href="https://github.com/"><small>github</small></a></li>
+          </ul>
+        </li>
+        {% if user.is_authenticated %}
+        {% if perms.guestbook.add_article %}
+        <li><a href="/message/create/#new">新增公告</a></li>
+        {% endif %}
+        <li><a href="/accounts/logout/#new">登出</a></li>
+        {% else %}
+        <li><a href="/accounts/login/#new">登入</a></li>
+        <li><a href="/message/accounts/register/#new">註冊</a></li>
+        {% endif %}
+        {% if user.is_staff %}
+        <li><a href="/admin/">後台</a></li>
+        {% endif %}
+        <li><a></a></li>
+      </ul>
+      </li>
+      </ul>
+    </div>
+
+  </nav>
+  <!-- Carousel
+    ================================================== -->
+  <div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="https://www.scienceabc.com/wp-content/uploads/2018/02/Fusion-nuclear-Fission-nuclear.jpg" alt="">
+        <div class="container">
+          <div class="carousel-caption">
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="https://nuclear-21.net/Logo.png" alt="">
+        <div class="container">
+          <div class="carousel-caption">
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="https://faculty.sites.uci.edu/trigareactor/files/2017/08/cropped-Main-Page-2.jpg" alt="">
+        <div class="container">
+          <div class="carousel-caption">
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  </div><!-- /.carousel -->
+  <!-- NAVBAR
+    ================================================== -->
+  <div class="navbar-wrapper d-none d-md-block">
+    <div class="container">
+      <a class="display-4">核彈研究社</a>
+      <div class=" pt-5 mt-5 d-none d-md-block"></div>
+      <div class=" pt-5 mt-5 d-none d-md-block"></div>
+      <div class=" pt-5 mt-5 d-none d-md-block"></div>
+      <div class="d-flex justify-content-end align-items-end">
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <!-- Navbar摺疊內容 -->
+            <div class="col-12"><br></div>
+            <div class="nav-collapse display-5" onclick="setTimeout('detect()', 10);">
+              <ul class="nav">
+                <li><a></a></li>
+                <li class="active"><a href="#">首頁</a></li>
+                <li><a href="/message/#new">公告</a></li>
+                <li><a href="/message/#info">內容</a></li>
+                <li><a href="/message/#about">關於</a></li>
+                <li><a href="/message/#member">成員</a></li>
+                <!-- Bootstrap下拉選單教學https://getbootstrap.com/2.3.2/javascript.html#dropdowns -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">網路資源<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li class="divider"></li>
+                    <li class="nav-header font-weight-bold">C++</li>
+                    <li><a href="https://zerojudge.tw/"><small>&nbsp;高中生解題系統</small></a></li>
+                    <li><a href="https://en.cppreference.com/w/cpp"><small>&nbsp;C++語法&函式</small></a></li>
+                    <li><a href="https://apcs.csie.ntnu.edu.tw/"><small>&nbsp;APCS</small></a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header font-weight-bold">網頁(HTML/CSS/JS/PHP)</li>
+                    <li><a
+                        href="https://www.youtube.com/playlist?list=PL4PF5uRyx54JdUM8J0qeLEu78Ags8mNUQ"><small>&nbsp;js線上教學影片</small></a>
+                    </li>
+                    <li><a href="https://getbootstrap.com/docs/4.4/getting-started/introduction/"><small>&nbsp;bootstrap
+                          4 入門</small></a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header font-weight-bold">Python</li>
+                    <li><a href="https://www.python.org/"><small>&nbsp;python官網</small></a></li>
+                    <li><a href="https://www.youtube.com/playlist?list=PL-g0fdC5RMboYEyt6QS2iLb_1m7QcgfHk"><small>&nbsp;python教學影片</small></a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header font-weight-bold">其他網站</li>
+                    <li><a href="https://riyntdypfmgq5f8zfnfxiq-on.drv.tw/info_club/menu.html"><small>js入門網站</small></a></li>
+                    <li><a href="https://riyntdypfmgq5f8zfnfxiq-on.drv.tw/unclear_club/lobby.html"><small>核研舊網站</small></a></li>
+                    <li><a href="https://github.com/"><small>github</small></a></li>
+                  </ul>
+                </li>
+                {% if user.is_authenticated %}
+                {% if perms.guestbook.add_article %}
+                <li><a href="/message/create/#new">新增公告</a></li>
+                {% endif %}
+                <li><a href="/accounts/logout/#new">登出</a></li>
+                {% else %}
+                <li><a href="/accounts/login/#new">登入</a></li>
+                <li><a href="/message/accounts/register/#new">註冊</a></li>
+                {% endif %}
+                {% if user.is_staff %}
+                <li><a href="/admin/">後台</a></li>
+                {% endif %}
+                <li><a></a></li>
+              </ul>
+            </div>
+            <!--/.nav-collapse -->
+          </div><!-- /.navbar-inner -->
+        </div>
+      </div><!-- /.navbar -->
+    </div> <!-- /.container -->
+  </div><!-- /.navbar-wrapper -->
+
+  <!-- 首頁
+    ==================================================-->
+  <div class="container" id="main">
+    <div class="raw">
+      <div class="col-12">
+        <h1>核子武器</h1>
+        <p style="font-size: medium;">
+          核武器，也叫核子武器或原子武器，簡稱核武，是利用核反應的光熱放射線、電磁脈衝、衝擊波和感生放射性造成殺傷和破壞作用，以及造成放射性污染，來阻止對方攻擊以達到目的的大殺傷力武器。 核彈亦是現時歷來世界最大威力的武器，而且破壞力可為同等重量體積的高能炸藥的炸彈的數千萬倍以上。
+        </p>
+        <br>
+        <h2>分裂核子武器</h2>
+        <p style="font-size: medium;">
+          分裂核武透過核分裂釋放能量。重核子如鈾或鈽在中子衝擊下發生核分裂反應，分裂成為較輕的核子，同時釋放更多的中子，造成連鎖反應。傳統上分裂核武稱為原子彈。
+        </p>
+        <br>
+        <h2>融合核子武器</h2>
+        <p style="font-size: medium;">
+          融合核武透過核融合釋放能量。輕核子如氫或氦結合成較重的元素，同時釋放大量的能量。使用融合過程的武器亦常被稱為氫彈，因為氫是融合的常用材料。融合核武有時亦稱熱核子武器，因為它們的連鎖反應需要更高的NANI溫度啟動。一般的氫彈會先引爆作為前級的分裂彈，造成足夠的溫度及壓力，之後的後級融合才會開始。後級可以無限制地連鎖起來，製成比普通分裂強力很多的核武。
+        </p>
+        <br>
+        <h2>三級彈</h2>
+        <p style="font-size: medium;">
+          現代的核武通常結合兩種核反應：融合需要先以分裂產生足夠的溫度及壓力啟動；同時分裂在融合開始後效率會得到提高。故此部分核武是三級設計：最先在外圍第一級先用核分裂，造成融合條件。中部第二級融合發生後，再引起彈頭中心的第三級的第二次分裂反應，造成裂－聚－裂反應的三級核彈，是現在最大破壞性的武器。
+        </p>
+        <br>
+        <h2>加強型原子彈</h2>
+        <p style="font-size: medium;">
+          又稱助爆原子彈或融合增強分裂核子武器，雖然名為「原子彈」實和中子彈同為為廣義氫彈一種，指雖然像典型氫彈般有融合材料作為核爆增強劑，但融合的主要作用是提供足夠中子，給分裂材料的分裂反應更為完全，意味所需的融合材料較少，所以較一般氫彈小巧。本類的原意是作為氫彈的技術驗證，後來通常此設計是用於小型的戰略級核彈和可調節威力的核彈，因威力雖然遜於典型氫彈卻勝在較緊湊。
+        </p>
+        <br>
+        <h2>髒彈</h2>
+        <p style="font-size: medium;">
+          具有放射性、非核子武器的武器。它裝填著放射性材料，爆炸的時候將放射性物質拋射散布，造成相當於核放射性塵埃的汙染，造成災難性的生態破壞。自九一一事件之後，西方政府最主要擔心的一個就是恐怖分子可能利用骯髒彈襲擊人口稠密區，作為區域封鎖武器，就像其他更高級、更覆雜的放射性武器，可以將這個地區在以後的數年或十幾年中，退化為不適合人類居住的放射性地區。
+        </p>
+        <br>
+        <h2>鈷核彈</h2>
+        <p style="font-size: medium;">
+          鈷核彈(Cobalt bomb)利用感生放射性的核武，原理是在彈殼使用鈷元素。如下反應式融合釋放的中子會令鈷變成鈷60外加強烈放射線。
+        </p>
+        <br>
+        <h2>中子彈</h2>
+        <p style="font-size: medium;">
+          武器內的X射線反射鏡及彈殼以鉻或鎳製成，讓融合中產生的中子離開彈體。高能量的中子流比其他放射更具穿透能力。一般能阻隔伽傌射線的物料要很厚（如一公尺厚的鋼板）才可以抵擋中子流，所以不適用機動兵器，唯一可以反射的鈹又有毒。因為只有水和電解質才能吸收中子，而生物中含大量水份，所以中子流對生物產生的傷害比伽傌射線更大。原先製造中子彈的目的，是希望可以殺人而不毀物（被戲稱為「業主炸彈」或「房貸積欠款炸彈」：能殺死屋內的人，但房子無損），而理論上最有效的是對付戰車，因為當時前蘇聯的戰車不只是數量遠比美國和全西歐總和還多，更大部分已經改裝了防止吸入放射塵空氣過瀘設備，故美國放棄了以放射塵而是中子流作為對蘇軍的主要威脅手段。
+        </p>
+        <br>
+        <h2>衝擊波彈</h2>
+        <p style="font-size: medium;">
+          它是一種小型氫彈，採用了慢化吸收中子技術，減少中子活化，削弱其爆炸後放射線的作用，部隊可以迅速進入爆炸區投入戰鬥，是一種戰術核彈。
+        </p>
+        <br>
+        <h2>伽瑪射線彈</h2>
+        <p style="font-size: medium;">
+          原理類似一座無防護層的分裂反應爐，所以不會發生一般意義上的爆炸，只放出大量伽瑪射線；儘管各種效應不大，也不會使人立刻死去，雖然能造成持久的放射線，但不一定會汙染土地，能有效迫使敵人離開。
+        </p>
+        <br>
+        <h2>核電磁脈衝彈</h2>
+        <p style="font-size: medium;">
+          經過改造的核彈，減弱了衝擊波與核放射線效應，增強了電磁脈沖效應（利用康普頓散射、光電效應等原理），利用在大氣層以上的核爆炸，產生大量定向或不定向的強電磁脈衝，基本上對人體無害，但可使電器（或金屬）急速升溫燒毀。
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 公告
+    ================================================== -->
+  <div class="container" id="new">
+    <div class="raw">
+      <select id="selecter" name="selecter" value="all">
+        <option value="all">全部</option>
+        　<option value="new">公告</option>
+        　<option value="share">分享</option>
+        　<option value="info">資訊</option>
+        　<option value="practice">梗圖</option>
+        <option value="problem">問題</option>
+        <option value="other">其他</option>
+      </select>
+      {% include "navbar.html" %}
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+  <!-- 內容
+    ================================================== -->
+  <div class="container" id="club_info">
+    <div class="raw">
+      <div class="col-12">
+        <h2>展望</h2>
+        <p style="font-size: medium;">
+          致力於提倡幹話文運動、古文運動和穎語交流
+        </p>
+        <br>
+        <h2>活動</h2>
+        <p style="font-size: medium;">
+          偶爾參加年度核彈國際會議
+        </p>
+        <br>
+        <h2>日常內容</h2>
+        <p style="font-size: medium;">
+          寫程式、講幹話
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 關於
+    ================================================== -->
+  <div class="container" id="about">
+    <div class="raw">
+      <div class="col-12">
+        <h2>組織</h2>
+        <p style="font-size: medium;">
+          大直高中神秘的地下社團，擁有各種高技術人才，低於100個全球專利，致力於推動台灣核武平民化
+        </p>
+        <br>
+        <h2>技術</h2>
+        <p style="font-size: medium;">
+          高中基礎的物理、化學、數學，國中以上的學歷，熟悉HTML、CSS、JavaScript、C++、VB、Jquery的技術人員，高中資訊概論基礎、具備簡易的影象處理、python、PHP和mySQL技術
+        </p>
+        <br>
+        <h2>創立</h2>
+        <p style="font-size: medium;">
+          於2018年創立，創立之初僅為5人之社團，後於2019年又增加一人
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 成員
+    ================================================== -->
+  <div class="container" id="member">
+    <div class="raw">
+      <div class="col-12">
+        <h2>社長</h2>
+        <p style="font-size: medium;">
+          無
+        </p>
+        <br>
+        <h2>副社長</h2>
+        <p style="font-size: medium;">
+          無
+        </p>
+        <br>
+        <h2>其他人</h2>
+        <p style="font-size: medium;">
+          匿名
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="club-footer">
+    <div class="container">
+      <div class="row position-relative">
+        <div class="col-12" style="padding-top:10px; padding-bottom: 10px;">
+          <div class="text-center text-smaller">
+            <p class="m-1">
+              大直高中資訊社© 2020.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- /.container -->
+
+  <!-- javascript
+    ================================================== -->
+  <script src="https://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-alert.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-modal.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-scrollspy.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-tab.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-tooltip.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-popover.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-button.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-carousel.js"></script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/bootstrap-typeahead.js"></script>
+  <script>
+    !function ($) {
+      $(function () {
+        // carousel demo
+        $('#myCarousel').carousel()
+      })
+    }(window.jQuery)
+
+    function detect() {
+      $('#selecter').hide();
+      $('#main').hide();
+      $('#club_info').hide();
+      $('#about').hide();
+      $('#member').hide();
+      $('#new').hide();
+
+      if (location.hash == "#" || location.hash == "") {
+        $('#main').show();
+      } else if (location.hash == "#info") {
+        $('#club_info').show();
+      } else if (location.hash == "#about") {
+        $('#about').show();
+      } else if (location.hash == "#member") {
+        $('#member').show();
+      } else if (location.hash == "#new") {
+        $('#new').show();
+        if (location.pathname == "/message/") {
+          $('#selecter').show();
+        }
+      }
+    }
+    function check(typel) {
+      $("#msg li").hide();
+      if (typel == "new") {
+        $("li[name='new']").show();
+      } else if (typel == "share") {
+        $("li[name='share']").show();
+      } else if (typel == "info") {
+        $("li[name='info']").show();
+      } else if (typel == "practice") {
+        $("li[name='practice']").show();
+      } else if (typel == "problem") {
+        $("li[name='problem']").show();
+      } else if (typel == "other") {
+        $("li[name='other']").show();
+      } else {
+        $("#msg li").show();
+      }
+    }
+    $(document).ready(function () {
+      $('#selecter').change(function () {
+        check($(this).children('option:selected').val());
+      });
+    })
+  </script>
+  <script src="https://getbootstrap.com/2.3.2/assets/js/holder/holder.js"></script>
+
+  {% block script %}{% endblock script %}
+</body>
+
+</html>

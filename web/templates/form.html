@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="https://cdn.ckeditor.com/4.13.1/full-all/ckeditor.js"></script>
+<form name="sub" action="" method="post">
+  {% csrf_token %}
+  <table class="table">
+    <tr style="display: none;">
+      <td><input id="id_user" name="user" class="form-control" value="{{ user.username }}"></td>
+    </tr>
+    <tr>
+      <input id="id_subject" name="subject" class="form-control" placeholder="主旨">
+    </tr>
+    <tr>
+      <select id="id_post_type" name="post_typel" class="form-control" value="new">
+        　<option value="new">公告</option>
+        　<option value="share">分享</option>
+        　<option value="info">資訊</option>
+        　<option value="practice">梗圖</option>
+        <option value="problem">問題</option>
+        <option value="other">其他</option>
+      </select>
+    </tr>
+    <tr>
+      <textarea name="content" id="id_content" cols="30" rows="10" class="form-control" data-sample-preservewhitespace
+        data-sample-short></textarea>
+    </tr>
+  </table>
+  <input type="button" id="check" onclick="test()" value="送出" class="btn btn-sm btn-primary" />
+  <input type="submit" id="submit" style="display: none;" class="btn btn-sm btn-primary" />
+</form>
+<script>
+  var config = {
+    removeButtons: "Scayt,PasteText,PasteFromWord,Outdent,Indent,CreateDiv,Save,Iframe,PageBreak,NewPage,Preview,Print,Templates,Find,SelectAll,Flash,About,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField",
+    extraAllowedContent: "img[src,alt,width,height]",
+    extraPlugins: "codesnippet,embed,autoembed,image2",
+    codeSnippet_theme: "monokai_sublime",
+    height: 356,
+    tabSpaces: "4",
+    contentsCss: [
+      'http://cdn.ckeditor.com/4.13.1/full-all/contents.css',
+      'https://ckeditor.com/docs/vendors/4.13.1/ckeditor/assets/css/widgetstyles.css'
+    ],
+    // Setup content provider. See https://ckeditor.com/docs/ckeditor4/latest/features/media_embed
+    embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+
+    // Configure the Enhanced Image plugin to use classes instead of styles and to disable the
+    // resizer (because image size is controlled by widget styles or the image takes maximum
+    // 100% of the editor width).
+    image2_alignClasses: ['image-align-left', 'image-align-center', 'image-align-right'],
+    image2_disableResizer: true,
+  };
+  CKEDITOR.replace("content", config);
+</script>
+<script>
+  Swal.fire({
+    title: '插入程式碼片段',
+    text: '點擊此按鈕並選取你要插入的程式語言!',
+    imageUrl: 'https://s2.ax1x.com/2020/02/10/1IZpxx.png',
+    imageWidth: 619,
+    imageHeight: 282,
+    imageAlt: '插入程式碼',
+  })
+  function test() {
+    var user = document.getElementById('id_user').value;
+    var subject = document.getElementById('id_subject').value;
+    var post_type = document.getElementById('id_post_type').value;
+    var $CKcontent = CKEDITOR.instances.id_content.getData();
+    if (subject == "" || $CKcontent == "" || post_type == "" || user == "") {
+      Swal.fire({
+        type: 'error',
+        title: '有空格尚未填寫',
+        text: '請確實填寫主旨和內容',
+      })
+    }else if(user != "{{ user.username }}"){
+      document.getElementById('id_user').value = "{{ user.username }}"
+      document.getElementById('submit').click();
+    } else {
+      document.getElementById('submit').click();
+    }
+  }
+</script>
+{% endblock %}

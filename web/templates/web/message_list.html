@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul class="list-group mt-2" id="msg">
+  {% for message in message_list %}
+  <li class="list-group-item list-group-item-action" name="{{ message.post_typel }}">
+    <small class="text-muted d-none d-lg-inline"><i class="fas fa-clock"></i> {{message.publication_date|date:"Y/m/d H:i"}}</small>
+    {% if perms.guestbook.remove_article %}
+    <a href="{{message.id}}/delete#new" class="text-danger" title="刪除"><i class="fas fa-minus-circle"></i></a>
+    {% endif %}
+    <a href="{{message.id}}#new">【{{ message.get_post_typel_display }}】{{ message.subject }}</a>
+    <small class="text-muted float-right d-none d-lg-inline"><i class="fas fa-user"></i> {{ message.user }}</small>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

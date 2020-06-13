@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if perms.guestbook.remove_article %}
+<h1>您確定要刪除這筆記錄嗎?</h1>
+<hr>
+<h2>【{{ message.get_post_typel_display }}】{{ message.subject }}</h2>
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="刪除" class="btn btn-sm btn-danger" />
+</form>
+{% else %}
+<p>你沒有權限刪除這筆記錄 !</p>
+{% endif %}
+{% endblock %}
